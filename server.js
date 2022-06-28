@@ -8,10 +8,11 @@ const express = require("express");
 const app = express();
 
 let mysql = require("mysql");
+let hostname = "0.0.0.0"
 
 //connect MySql DB
 let con = mysql.createConnection({
-  host: "localhost",
+  host: hostname,
   user: "root",
   password: "faisel330$$$",
   database: "analytics_db",
@@ -115,7 +116,7 @@ function sendError(res) {
 }
 //wait for ready function to emit
 app.on("ready", function () {
-  app.listen(3000, function () {
+  app.listen(3000,hostname, function () {
     console.log("app is ready and listening");
   });
 });
